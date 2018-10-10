@@ -7,7 +7,7 @@
 ##############################################################################################
 
 ##############################################################################################
-setwd("\\\\fda.gov/WODC/CTP_Sandbox/OS/DPHS/StatisticsBranch/Team 2/Montes de Oca/Linear Regression Assignment/Ch4/code/")
+
 getwd()
 
 ##############################################################################################
@@ -369,8 +369,8 @@ F= (Q/2) / ( ((t(Y) %*% Y) - t(bh) %*% t(X) %*% Y ) / qr(I-P)$rank )
 F
 
 ##The computed F is much smaller than the critical value F(.05,2,26) = 3.37
-##and, therefore, there is no reason to reject the null hypothesis that ﬂ2 and
-##ﬂ4 are both zero:
+##and, therefore, there is no reason to reject the null hypothesis that √ü2 and
+##√ü4 are both zero:
 qf(0.95, df1=2, df2=26) 
 pf(F, 2, 26)
 
@@ -400,11 +400,11 @@ SSRes/ sum(diag(I-P))   #SSRes/n-p' is also s^2
 
 
 ##The second hypothesis illustrates a case where m = 0. Suppose prior
-###information suggested that the intercept ﬂ0 for a group of men of this
-###age and weight should be 90. Then the null hypothesis of interest is ﬂ0 =
+###information suggested that the intercept √ü0 for a group of men of this
+###age and weight should be 90. Then the null hypothesis of interest is √ü0 =
 ###90 and, for illustration, we construct a composite hypothesis by adding
 ###this constraint to the two conditions in the first null hypothesis. The null
-###hypothesis is now H0: K' ﬂ -m = 0:
+###hypothesis is now H0: K' √ü -m = 0:
 
 #To test H0: beta2=beta4=0=m:
 m=matrix(c( 
@@ -437,7 +437,7 @@ F
 
 ##which, again, is much less than the critical value of F for a = .05 and 3
 ###and 26 degrees of freedom, F(.05,3,26) = 2.98. There is no reason to reject
-###the null hypothesis that ﬂ0 = 90 and ﬂ2 = ﬂ4 = 0.
+###the null hypothesis that √ü0 = 90 and √ü2 = √ü4 = 0.
 
 qf(0.95, df1=3, df2=26) 
 pf(F, 3, 26)
@@ -454,8 +454,8 @@ F= (Q/2) / ( ((t(Y) %*% Y) - t(bh) %*% t(X) %*% Y ) / qr(I-P)$rank )
 F
 
 ##The computed F is much smaller than the critical value F(.05,2,26) = 3.37
-##and, therefore, there is no reason to reject the null hypothesis that ﬂ2 and
-##ﬂ4 are both zero:
+##and, therefore, there is no reason to reject the null hypothesis that √ü2 and
+##√ü4 are both zero:
 qf(0.95, df1=2, df2=26) 
 pf(F, 2, 26)
 
