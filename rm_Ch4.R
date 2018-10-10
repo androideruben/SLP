@@ -1,6 +1,6 @@
 ##############################################################################################
 #rm_Ch4.R 
-#programmer: Ruben Montes de Oca, CTP
+#programmer: Ruben 
 #Purpose: Review of regression
 #Started on February 1, 2018
 
