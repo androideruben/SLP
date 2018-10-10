@@ -1,12 +1,12 @@
 ##############################################################################################
 #rm_Ch2.R 
-#programmer: Ruben Montes de Oca, CTP
+#programmer: Ruben
 #Purpose: Review of regression
 #Started on February 1, 2018
 ##############################################################################################
 
 ##############################################################################################
-setwd("//fda.gov/WODC/CTP_Sandbox/OS/DPHS/StatisticsBranch/Team 2/Montes de Oca/Linear Regression Assignment/Dataset")
+
 getwd()
 rm(list=ls())
 
