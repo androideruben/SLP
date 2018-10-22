@@ -1,13 +1,12 @@
 ###################################################################################################################################
 #rm_chapter1.R 
-#programmer: Ruben Montes de Oca, CTP
+#programmer: Ruben 
 #Purpose: Review of regression
 #Started on February 1, 2018
 ##############################################
 
 ###############################################
-setwd("//fda.gov/WODC/CTP_Sandbox/OS/DPHS/StatisticsBranch/Team 2/Montes de Oca/Linear Regression Assignment/Dataset")
-library(readxl)
+
 dat1<-read_excel("dat1.xlsx", sheet = "Sheet1")
 #attach(dat1); summary(dat1); 
 sapply(dat1,is.numeric)
