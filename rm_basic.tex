@@ -1,0 +1,356 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%https://nw360.blogspot.com/2017/03/set-up-pdf-viewer-in-texniccenter.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,11pt]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}         
+\usepackage{amsthm}
+\usepackage{afterpage}
+\usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{latexsym}
+
+%\usepackage[framemethod=0,ntheorem]{mdframed}
+
+\usepackage{etexcmds}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+\usepackage[font=small,labelfont=bf,skip=0pt]{caption}
+%\captionsetup[table]{skip=0.2pt}
+%\captionsetup[table]{aboveskip=0pt}
+%\captionsetup[table]{belowskip=-15pt}
+
+\usepackage{subcaption}
+
+%\captionsetup[subtable]{skip=2pt}
+
+\usepackage[tableposition=top]{caption}
+\usepackage[toc,page]{appendix}
+\usepackage{amsfonts}
+
+\setcounter{MaxMatrixCols}{30}
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+
+\newcommand{\tablefont}{\fontsize{3mm}{3mm}\selectfont}
+\MakeOuterQuote{"}
+
+\newcommand{\MC}{\multicolumn}
+\newcommand{\MR}{\multirow}
+
+\headheight 15pt
+\headsep 2em
+
+\renewcommand{\footrulewidth}{0pt}
+\newtheorem{remark}{Remark}
+\newtheorem{comment}{\textbf{Comment}}
+\newtheorem{definition}{Definition}
+\newtheorem{discussion}{Discussion:}
+\newtheorem{claim}{Claim}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+\newcolumntype{T}{>{\tiny}l}
+\newcolumntype{M}{>{\centering\arraybackslash}m{3.1cm}}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy} %added by CDE to allow headers, footers to work
+%\rhead{Share\LaTeX}
+%\lhead{Guides and tutorials}
+
+
+\usepackage[pdftex]{hyperref}   
+\hypersetup{colorlinks, citecolor=Violet, linkcolor=Mahogany, urlcolor=blue}
+
+\rfoot{Page \thepage}
+\lfoot{DRAFT-DELIBERATIVE-CONFIDENTIAL}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace{-25pt}%
+
+\begin{tabular}[t]{lp{1in}l}
+	\multirow{5}{*}{\includegraphics[width = 2in]{logo.png}} && Department \leavevmode  \\
+																								&& Dep \\
+																								&& Center\\
+\end{tabular}
+
+\typeout{************RUBEN IS HERE DEBBUGING THE LOG}
+
+\leavevmode \newline \vspace{15pt} \newline {\Large \textsc{Generalized Estimating Equations and Linear Mixed Models}}\newline\vspace{0.015in}
+
+\begin{tabular}[h!]{p{2in} p{10in}}
+	\rule{0pt}{4ex}\textbf{Reporting to:}          & name1  \\
+																							   & position \\
+                                                 & \\
+	\rule{0pt}{4ex}\textbf{Key Words:}  					 & Individual and population approaches\\
+																								 & Sandwich estimator, REML, Quasi Likelihood \\
+ \mbox{$\quad$} \\
+ \mbox{$\quad$} \\
+\end{tabular}
+
+\newpage
+\noindent 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%2018-10-23
+
+\section*{EXAMEN DE PRACTICA}
+
+Ejercicios de practica de examen
+
+\section{USO DE DATOS EN R}
+
+\textbf{\textit{Ejercicios 1}}:\\
+
+Para cada conjunto de los siguientes datos ajusta un modelo de recta de \textbf{\textit{minimos cuadrados}} tambien conocidos como 
+\textbf{\textit{Ordinary Least Squares (OLS)}}, esto es, lee los datos en R y ejecuta \textbf{\textit{linear models (lm)}} para obtener la \textbf{\textit{ordenada al origen (intercept)}} y \textbf{\textit{pendiente (slope)}}. Una vez que tengas estos dos numeros, escribe el modelo a mano usando la notacion del modelo estimado:
+
+\begin{equation}
+\hat{Y}= \hat{\beta_{0}} + \hat{\beta_{1}} X
+\end{equation}
+	
+	
+donde $\hat{\beta_{0}}$ la reemplazas por intercept y $\hat{\beta_{1}}$ por slope.
+
+\section{USO DE FORMULAS}
+
+Estas son las formulas para obtener intercept y slope con calculadora y se llaman \textbf{\textit{Ecuaciones Normales}}:
+
+\begin{itemization}
+\item
+	\begin{equation}
+	\sum{Y_{i}}= n(\hat{\beta_{0}}) + (\sum{X_{i}) \hat{\beta_{1}}
+	\end{equation}
+
+\item
+	\begin{equation}
+	\sum{X_{i} Y_{i}}= (\sum{X_{i}) \hat{\beta_{0}} + (\sum{X_{i}^2) \hat{\beta_{1}}
+	\end{equation}
+	
+\end{itemization}
+
+Las soluciones son las siguientes dos ecuaciones:
+	
+	\begin{equation}
+	\hat{\beta_{1}}= \frac {\sum (X_{i} - \overline{X})* (Y_{i} - \overline{Y})} {(\sum X_{i} -\overline{X})^2}
+	\end{equation}
+
+	\begin{equation}
+	\hat{\beta_{0}}= \overline{Y} - \hat{\beta_{1}} \overline{X}
+	\end{equation}
+	
+Con $\overline{Y}, \overline{Y}$ los promedios de las observaciones $Y_{i}, X_{i}$	respectivamente.\\
+\textbf{\textit{Ejercicio 2}}:\\
+	
+Si Y tiene valores 1, 4, 6 y X tiene valores 1, 3, 5, usa las formulas de arriba y calcula $\hat{\beta_{0}}$ y $\hat{\beta_{1}}$ \\
+En R como calculadora es asi:
+
+x=c(1,3,5)
+y=c(1,4,6)
+rr=data.frame(y,x)
+rr
+plot(y~x, data=rr)
+summary(lm(y~x, data=rr))
+
+sum_xy=(1*1) + (3*4)+ (5*6)
+sum_x_sum_y=(1+3+5)* (1+4+6)
+sum_xx=1+ 9+ 25
+sum_x=1+3+5
+sum_y=1+4+6
+n=3
+
+beta1_hat= ( sum_xy - ( sum_x_sum_y / n) ) / (sum_xx- sum_x^2/n)
+beta1_hat
+beta0_hat=(sum_y/n) - beta1* sum_x/n 
+beta0_hat
+
+Notas:
+El modelo teorico es $Y= \beta_{0} + \beta_{1} \times X + \epsilon$ \\Ahi aceptamos que hay un error al que llamamos $\epsilon$
+Una vez que tenemos datos y hacemos los calculos obtenemos una aproximacion al modelo teorico llamado 
+modelo estimado: $\hat{Y}= \hat{\beta_{0}} + \hat{\beta_{1}} \times X$ \\ 
+los parametros $\hat{\beta_{0}} + \hat{\beta_{1}}$ se reemplazan ahora por la ordenada al origen y pendiente obtenida por
+calculos ya sea a mano o con R. El modelo estimado ya no tiene escrito el error $\epsilon$,
+en vez, el error esta ahora estimado (calculado) como la suma de residuos:  
+
+	\begin{equation}
+	SS(Res)= \sum(Y_{i}- \hat{Y_{i}})^2
+	\end{equation}
+	
+	donde i=1, 2, 3,... son las observaciones o renglones en los datos observados: $Y_{i}$ son las observaciones Y en nuestros datos,
+	y $\hat{Y_{i}}$ son los valores estimados de Y.
+	
+	
+\section{MODELO PROBABILISTICO O ESTADISTICO}
+Las dos secciones anteriores tratan de la geometria de ajustar datos a un modelo teorico 
+
+	\begin{equation}
+$Y= \beta_{0} + \beta_{1} \times X + \epsilon$
+	\end{equation}
+
+Agregaremos ahora probabilidad a este modelo suponiendo lo siguiente: \\
+
+\begin{itemization}
+\item Los errores de cada observacion i=1, 2, 3... tienen una distribucion probabilistica \textbf{\textit{Normal}} con valor esperado cero y varianza $\sigma^{2}$, esto se escribe como
+
+	\begin{equation}
+\epsilon_{i} \sim \mathcal{N}(0,\sigma^{2})
+	\end{equation}
+
+\item Los errores son independientes mutuamente, esto es, la probabilidad de $\epsilon_{i}$ no es afectada por la probabilidad de 
+$\epsilon_{j}$ con i, j observaciones 1, 2, 3... y j $\neq$ i.
+
+Como la variable X no es probabilistica, la variable Y hereda estas propiedades de los errores $\epsilon$:
+
+	\begin{equation}
+Y_{i} \sim \mathcal{N}( (\beta_{0} + \beta_{1} X),\sigma^{2})
+	\end{equation}
+	
+Con estas suposiciones, nuestras Ecuaciones Normales nos daran los \textbf{\textit{Best Linear Unbiased Estimators (BLUE)}},
+o sea, cualquier otra manera de estimar linealmente y sin sezgo la ordenada al origen y la pendiente nos daria estimadores con una mayor varianza. Entonces, nuestros estimadores son muy buenos geometricamente por tener la distancia minima a la recta estimada, y son muy buenos porque ahora tienen esta propiedad probabilistica deseable de ser BLUE.\\
+
+\textbf{\textit{Ejercicios 3:}}\\
+
+De los datos 1, ejecuta tu modelo, por ejemplo para los datos cars: rm.lm $<-$ lm(dist~speed, data=cars).
+Ahora ejecuta summary(rm.lm)
+
+Esta tabla se llama \textbf{\textit{Analisis de Varianza (ANOVA)}} y tiene aparte de los coeficientes ordenada al origen y slope,
+Std. Error, t value y Pr( $> \abs{t}$).
+
+Observa los valores de Pr( $> \abs{t}$) que corresponden a la ordenada al origen y a la slope.
+Preguntate si alguno de estos numeros es menor que 0.05.
+
+Observa tambien el valor Adjusted $R-squared$ y pregunate si este valor esta cercano a 1.
+Observa tambien el valor $F-statistic$ y el $p-value$, y preguntate si este valos es menor que 0.05
+
+\section{X COMO VARIABLE ALEATORIA, COMO VARIABLE NO ALEATORIA}
+En esta seccion pondremos mas atencion en la formulacion del modelo teorico
+
+R tiene unos datos llamados women que es promedio de estaturas (height) y pesos (weight) de mujeres de los EU,
+tiene solo 15 observaciones.
+
+\textbf{\textit{Ejercicios 4}}:\\
+
+Ejecuta plot(height, weight, data=women)
+
+Haz un modelo de regresion, tu escoge cual es tu Y y cual es tu X y reporta tu tabla ANOVA con tu modelo estimado como en los ejercicios 
+USOS DE DATOS EN R
+
+Ahora, revisa si estos datos son independientes, esto es, si la probabilidad de Y depende de X ejecutando una 
+prueba de $\CHI_^{2}$, recuerda que la hipotesis nula es $H_{0}$: P(Y|X)= P(Y) de que Y y X son independientes, 
+y la $H_{A}$: de que  P(Y|X) $\neq$ P(Y). Usaremos un nivel de significancia de $\alpha$= 0.05.
+
+Reporta los valores $\CHI_^{2}$, grados de libertad y p-value. Escribe cual es tu conclusion, esto es, aceptas $H_{0}$ o no
+
+Ahora haz una regresion, aunque en el ejercicio anterior usamos de que height y weight son variables aleatorias o probabilisticas, en nuestro modelo de regresion supondremos que la Y es aleatoria y la X no lo es.
+
+Reporta lo que observas en la tabla de ANOVA y explica cuales son las hipotesis $H_{0}$, y que es lo que te dice F-statistic junto su p-value.
+Lo que reportes debe de ser que la ordenada al origen y la pendiente son diferentes de cero significativamente (al nivel de
+significancia $\alpha$= 0.05, y que el modelo es significativamente diferente de cero, esto es:
+
+En el full model ($Y= \beta_{0} + \beta_{1} \times X + \epsilon$)
+
+$H_{0}: \beta_{0}$=0 y $\beta_{1}$=0
+$H_{A}$: la negacion de H0.
+
+\section{DESIGN MATRIXY ALGEBRA LINEAL}
+Los datos women son:
+
+  height weight
+     58    115
+     59    117
+     60    120
+     61    123
+     62    126
+     63    129
+     64    132
+     65    135
+     66    139
+     67    142
+     68    146
+     69    150
+     70    154
+     71    159
+     72    164
+
+La observacion 1 es $Y_{1}=58, X_{1}=115, \ldots$ la observacion 15 es $Y_{15}=72, X_{15}= 164$
+
+Y se puede ver como el vector Y es:
+
+	\[\pmb{Y}=
+	\begin{bmatrix}
+	58  \\
+	59  \\
+	\vdots \\
+	72 	\\
+	\end{bmatrix}
+	\] 
+
+
+y para nuestro modelo con $\beta_{0} y \beta_{1}$ usamos la design matrix siguiente:
+
+
+	\[\pmb{X}=
+	\begin{bmatrix}
+	1 			& 115 	\\
+	1 			& 117 	\\
+	\vdots 	& \vdots  \\
+	1 			& 164 	\\
+	\end{bmatrix}
+	\]
+\\ \\
+
+
+
+El modelo de regresion lineal se escribe con matrices de la siguiente manera:
+
+$Y= \beta_{0} + \beta_{1} \times X + \epsilon$
+
+donde $\epsilon$ es tambien un vector
+
+	\[\pmb{Y}=
+	\begin{bmatrix}
+	\epsilon_{1}  \\
+	\epsilon_{2}  \\
+	\vdots \\
+	\epsilon_{15} 	\\
+	\end{bmatrix}
+	\] .
+
+
+Por lo tanto, el modelo se puede escribir coordenada por coordenada:
+
+
+$Y_{i}= \beta_{0i}+ \beta_{1i} \times X_{i} + \epsilon_{i}$
+
+Cuando tenemos los datos, el modelo ajustado es:\\
+
+$\hat{Y_{i}}= \hat{\beta_{0}} + \hat{\beta_{1}} \times X_{i}}$ con i=1, 2, 3,..., 15.\\
+
+\textbf{\textit{Ejercicios 5}}:\\
+
+Usando tu modelo estimado $\hat{Y}= \hat{\beta_{0}} + \hat{\beta_{1}} \times X$ \\ 
+sutituye en tu modelo los dos primeros valores de X y escibe cuales son los valores esperados de Y.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
