@@ -180,9 +180,18 @@ Para cada conjunto de los siguientes datos ajusta un modelo de recta de \textbf{
 \end{equation}
 	
 	
-donde $\hat{\beta_{0}}$ la reemplazas por intercept y $\hat{\beta_{1}}$ por slope.
+donde $\hat{\beta_{0}}$ la reemplazas por intercept y $\hat{\beta_{1}}$ por slope.\\
 
-Los datos son e1_1.xls, women de R (ejecuta View(women) para ver los datos), cars de R. Tu selccionas cuales son tus variables Y, X.
+Las bases de datos son estas tres: 
+\begin{enumerate}
+\item \verb|e1_1.xls
+\item women de R
+\item cars de R. 
+\end{enumerate} \\
+
+Eejecuta View(women) o View(cars) para ver los datos. \\
+
+Tu selccionas cuales son tus variables Y, X.
 
 \section{USO DE FORMULAS}
 
@@ -310,8 +319,10 @@ Recuerda que en nuestro modelo lineal Y es una variable que tiene errores pero X
 Ahora, revisa si estos datos son independientes, esto es, si la probabilidad de Y depende de X ejecutando una 
 prueba de $\CHI_^{2}$, recuerda que la hipotesis nula es $H_{0}$: P(Y|X)= P(Y) de que Y y X son independientes, 
 y la $H_{A}$: de que  P(Y|X) $\neq$ P(Y). Usaremos un nivel de significancia de $\alpha$= 0.05.
-A diferencia de nuestro modelo de regresion, aqui tanto Y como X son variables con errores.
-Cuando X no tiene errores siempre ocurre que P(Y|X)= P(Y)
+A diferencia de nuestro modelo de regresion en donde X es medida sin error y Y es medida con error, en las pruebas de independencia 
+tanto Y como X son variables con errores.
+(Hay modelos lineales donde la X puede ser medida con error, uno de estos modelos es el Linear Mixed Model
+que sera tema de un curso posterior).
 
 Reporta los valores $\CHI_^{2}$, grados de libertad y p-value. Escribe cual es tu conclusion, esto es, aceptas $H_{0}$ o no
 
