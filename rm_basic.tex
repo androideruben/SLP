@@ -170,7 +170,7 @@ Ejercicios de practica de examen
 
 \section{USO DE DATOS EN R}
 
-\textbf{\textit{Ejercicios 1}}:\\
+\textbf{\textit{Ejercicios de uso de datos en R}}:\\
 
 Para cada conjunto de los siguientes datos ajusta un modelo de recta de \textbf{\textit{minimos cuadrados}} tambien conocidos como 
 \textbf{\textit{Ordinary Least Squares (OLS)}}, esto es, lee los datos en R y ejecuta \textbf{\textit{linear models (lm)}} para obtener la \textbf{\textit{ordenada al origen (intercept)}} y \textbf{\textit{pendiente (slope)}}. Una vez que tengas estos dos numeros, escribe el modelo a mano usando la notacion del modelo estimado:
@@ -181,6 +181,8 @@ Para cada conjunto de los siguientes datos ajusta un modelo de recta de \textbf{
 	
 	
 donde $\hat{\beta_{0}}$ la reemplazas por intercept y $\hat{\beta_{1}}$ por slope.
+
+Los datos son e1_1.xls, women de R (ejecuta View(women) para ver los datos), cars de R. Tu selccionas cuales son tus variables Y, X.
 
 \section{USO DE FORMULAS}
 
@@ -210,7 +212,7 @@ Las soluciones son las siguientes dos ecuaciones:
 	\end{equation}
 	
 Con $\overline{Y}, \overline{Y}$ los promedios de las observaciones $Y_{i}, X_{i}$	respectivamente.\\
-\textbf{\textit{Ejercicio 2}}:\\
+\textbf{\textit{Ejercicio de uso de formulas}}:\\
 	
 Si Y tiene valores 1, 4, 6 y X tiene valores 1, 3, 5, usa las formulas de arriba y calcula $\hat{\beta_{0}}$ y $\hat{\beta_{1}}$ \\
 En R como calculadora es asi:
@@ -229,13 +231,13 @@ sumX=1+3+5 \\
 sumY=1+4+6 \\
 n=3 \\ \\
 
-beta1HAT= ( sumXY - ( sumXsumY / n) ) / (sumXX- ${sumX}^2$) /n) \\
+beta1HAT= ( sumXY - ( sumXsumY / n) ) / (sumXX- sumX* sumX) /n) \\
 beta1HAT \\
 beta0HAT=(sumY/n) - beta1* sumX/n \\
 beta0HAT \\ \\
 
 Notas:
-El modelo teorico es $Y= \beta_{0} + \beta_{1} \times X + \epsilon$ \\Ahi aceptamos que hay un error al que llamamos $\epsilon$
+El modelo teorico es $Y= \beta_{0} + \beta_{1} \times X + \epsilon$. \\Ahi aceptamos que hay un error al que llamamos $\epsilon$
 Una vez que tenemos datos y hacemos los calculos obtenemos una aproximacion al modelo teorico llamado 
 modelo estimado: $\hat{Y}= \hat{\beta_{0}} + \hat{\beta_{1}} \times X$ \\ 
 los parametros $\hat{\beta_{0}} + \hat{\beta_{1}}$ se reemplazan ahora por la ordenada al origen y pendiente obtenida por
@@ -250,7 +252,7 @@ en vez, el error esta ahora estimado (calculado) como la suma de residuos:
 	y $\hat{Y_{i}}$ son los valores estimados de Y.
 	
 	
-\section{MODELO PROBABILISTICO O ESTADISTICO}
+\section{MODELO ESTADISTICO}
 Las dos secciones anteriores tratan de la geometria de ajustar datos a un modelo teorico 
 
 	\begin{equation}
@@ -278,7 +280,7 @@ Y_{i} \sim \mathcal{N}( (\beta_{0} + \beta_{1} X),\sigma^{2})
 Con estas suposiciones, nuestras Ecuaciones Normales nos daran los \textbf{\textit{Best Linear Unbiased Estimators (BLUE)}},
 o sea, cualquier otra manera de estimar linealmente y sin sezgo la ordenada al origen y la pendiente nos daria estimadores con una mayor varianza. Entonces, nuestros estimadores son muy buenos geometricamente por tener la distancia minima a la recta estimada, y son muy buenos porque ahora tienen esta propiedad probabilistica deseable de ser BLUE.\\
 
-\textbf{\textit{Ejercicios 3:}}\\
+\textbf{\textit{Ejercicios de modelo estadistico:}}\\
 
 De los datos 1, ejecuta tu modelo, por ejemplo para los datos cars: rm.lm $<-$ lm(dist~speed, data=cars).
 Ahora ejecuta summary(rm.lm)
@@ -292,26 +294,29 @@ Preguntate si alguno de estos numeros es menor que 0.05.
 Observa tambien el valor Adjusted $R-squared$ y pregunate si este valor esta cercano a 1.
 Observa tambien el valor $F-statistic$ y el $p-value$, y preguntate si este valos es menor que 0.05
 
-\section{X COMO VARIABLE ALEATORIA, COMO VARIABLE NO ALEATORIA}
-En esta seccion pondremos mas atencion en la formulacion del modelo teorico
+\section{PRUEBA DE INDEPENDENCIA USANDO X COMO VARIABLE ALEATORIA}
+En esta seccion pondremos mas atencion en la formulacion del modelo teorico.
 
 R tiene unos datos llamados women que es promedio de estaturas (height) y pesos (weight) de mujeres de los EU,
-tiene solo 15 observaciones.
+tiene solo 15 observaciones. Ejecuta View(women) para que veas los datos.
 
-\textbf{\textit{Ejercicios 4}}:\\
+\textbf{\textit{Ejercicios de prueba de independencia usando a X como variable aleatoria}:\\
 
 Ejecuta plot(height, weight, data=women)
 
-Haz un modelo de regresion, tu escoge cual es tu Y y cual es tu X y reporta tu tabla ANOVA con tu modelo estimado como en los ejercicios 
-USOS DE DATOS EN R
+Haz un modelo de regresion, tu escoge cual es tu Y y cual es tu X y reporta tu tabla ANOVA con tu modelo estimado.
+Recuerda que en nuestro modelo lineal Y es una variable que tiene errores pero X no los tiene.
 
 Ahora, revisa si estos datos son independientes, esto es, si la probabilidad de Y depende de X ejecutando una 
 prueba de $\CHI_^{2}$, recuerda que la hipotesis nula es $H_{0}$: P(Y|X)= P(Y) de que Y y X son independientes, 
 y la $H_{A}$: de que  P(Y|X) $\neq$ P(Y). Usaremos un nivel de significancia de $\alpha$= 0.05.
+A diferencia de nuestro modelo de regresion, aqui tanto Y como X son variables con errores.
+Cuando X no tiene errores siempre ocurre que P(Y|X)= P(Y)
 
 Reporta los valores $\CHI_^{2}$, grados de libertad y p-value. Escribe cual es tu conclusion, esto es, aceptas $H_{0}$ o no
 
-Ahora haz una regresion, aunque en el ejercicio anterior usamos de que height y weight son variables aleatorias o probabilisticas, en nuestro modelo de regresion supondremos que la Y es aleatoria y la X no lo es.
+Ahora haz una regresion, aunque en el ejercicio de prueba de independencia usamos de que height y weight son variables medidas con error, 
+en nuestro modelo de regresion supondremos que Y es medida con error y X es medida sin error.
 
 Reporta lo que observas en la tabla de ANOVA y explica cuales son las hipotesis $H_{0}$, y que es lo que te dice F-statistic junto su p-value.
 Lo que reportes debe de ser que la ordenada al origen y la pendiente son diferentes de cero significativamente (al nivel de
@@ -325,22 +330,31 @@ $H_{A}$: la negacion de H0.
 \section{DESIGN MATRIXY ALGEBRA LINEAL}
 Los datos women son:
 
-  height weight
-     58    115
-     59    117
-     60    120
-     61    123
-     62    126
-     63    129
-     64    132
-     65    135
-     66    139
-     67    142
-     68    146
-     69    150
-     70    154
-     71    159
-     72    164
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ obs & height & weight \\ [0.5ex] 
+ \hline\hline
+ 1  &  58  &  115 \\ [0.5ex] 
+ 2  &  59  &  117 \\
+ 3  &  60  &  120 \\
+ 4  &  61  &  123 \\
+ 5  &  62  &  126 \\
+ 6  &  63  &  129 \\
+ 7  &  64  &  132 \\
+ 8  &  65  &  135 \\
+ 9  &  66  &  139 \\
+10  &  67  &  142 \\
+11  &  68  &  146 \\
+12  &  69  &  150 \\
+13  &  70  &  154 \\
+14  &  71  &  159 \\
+15  &  72  &  164 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+
 
 La observacion 1 es $Y_{1}=58, X_{1}=115, \ldots$ la observacion 15 es $Y_{15}=72, X_{15}= 164$
 
