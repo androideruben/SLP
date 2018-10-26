@@ -3,6 +3,8 @@ datos de Sarah
 trampeo 2013 a 2017
 ***************************************************************************/
 
+%let program_name=rm_sarah;
+
 title "Trampeo por municipio y year";
 title2 "Datos Sarah";
 title3;
