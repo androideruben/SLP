@@ -72,6 +72,29 @@ PlantGrowth$group1 <- ifelse(PlantGrowth0$group=="ctrl", 0,
 PlantGrowth$group2 <- ifelse(PlantGrowth0$group=="ctrl", 0, 
                           ifelse(PlantGrowth0$group=="trt2", 1, 0))
 
+#plots
+boxplot(weight~group, names=c(), 
+	data=PlantGrowth, main="PlantGrowth Data", xlab="Group", ylab="Weight in oz")
+
+par(pch=22, col="red") # plotting symbol and color
+par(mfrow=c(2,4)) # all plots on one page
+opts = c("p","l","o","b","c","s","S","h")
+for(i in 1:length(opts)){
+  heading = paste("type=",opts[i])
+  plot(PlantGrowth$weight, PlantGrowth$group, type="n", main=heading)
+  lines(PlantGrowth$weight, PlantGrowth$group, type=opts[i])
+}
+
+par(pch=22, col="red") # plotting symbol and color
+par(mfrow=c(2,4)) # all plots on one page
+opts = c("p","l","o","b","c","s","S","h")
+for(i in 1:length(opts)){
+  heading = paste("type=",opts[i])
+  plot(PlantGrowth$weight, PlantGrowth$group, main=heading)
+  lines(PlantGrowth$weight, PlantGrowth$group, type=opts[i])
+}
+
+
 #regression with and without dummies and t-test
 rm.lma <- lm(weight~group, data=PlantGrowth)
 summary(rm.lma)
