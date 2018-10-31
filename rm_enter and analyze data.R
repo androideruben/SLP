@@ -63,6 +63,24 @@ plot(m1)
 par(mfrow=c(2,2))
 plot(m1)
 
+#create vars:
+PlantGrowth0 <- PlantGrowth
+
+PlantGrowth$group1 <- ifelse(PlantGrowth0$group=="ctrl", 0, 
+                          ifelse(PlantGrowth0$group=="trt1", 1, 0))
+
+PlantGrowth$group2 <- ifelse(PlantGrowth0$group=="ctrl", 0, 
+                          ifelse(PlantGrowth0$group=="trt2", 1, 0))
+
+#regression with and without dummies and t-test
+rm.lma <- lm(weight~group, data=PlantGrowth)
+summary(rm.lma)
+
+rm.lmb <- lm(weight~group1+group2, data=PlantGrowth)
+summary(rm.lmb)	
+
+t.test(weight~group1, data=PlantGrowth)
+t.test(weight~group2, data=PlantGrowth)
 
 #transform data
 fitness$Lweight<-log(fitness$weight)
