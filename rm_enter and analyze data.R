@@ -105,6 +105,20 @@ summary(rm.lmb)
 t.test(weight~group1, data=PlantGrowth)
 t.test(weight~group2, data=PlantGrowth)
 
+#regressions from book of Sen
+library(Hmisc)
+library(psych)
+library(readxl)
+
+#read data:
+e1_1 <- read_excel("C:\\Users\\ruben\\Documents\\rm\\archive\\AAA_Sen\\e1_1.xls")
+View(e1_1)
+
+#regresion con Y=SPEED es medida con error y X=DENSITY es medida sin "error"
+rm.lm <- lm(SPEED~DENSITY, data=e1_1) 
+summary(rm.lm)
+
+plot(SPEED ~ DENSITY, data = e1_1)
 #transform data
 fitness$Lweight<-log(fitness$weight)
 plot(Lweight~age,fitness)
