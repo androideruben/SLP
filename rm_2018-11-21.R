@@ -53,6 +53,7 @@ CO2.short$logconc <- log(CO2.short$conc)
 fitted(rm.lmlog)
 residuals(rm.lmlog)
 
+###############################################################################
 #The degrees of freedom associated with each sum of squares is determined
 #by the sample size n and the number of parameters p in the model. [We
 #use p' to denote the number of parameters in the model and p (without
@@ -61,6 +62,7 @@ residuals(rm.lmlog)
 #associated with SS(Model) is p'=2; the degrees of freedom associated with
 #SS(Regr) is always 1 less to account for subtraction of the correction factor,
 
+############################################################################
 
 #simulating a Poisson distribution p(x)=λ^x exp(-λ)/x!
 y <- rpois(n=1000, lambda = 1) # Poisson distribution
@@ -76,6 +78,7 @@ hist(y)
 
 f <- function(x) {mean(x)}
 f(y)
+
 
 #regression (generalized linear models) model Poisson
 ##create data
@@ -100,6 +103,15 @@ summary(rm.glm)
 
 rm.lm <- lm(y~x, data=rm.data)
 summary(rm.lm)
+
+
+#Function
+info <-function(d) {writeLines("structure of the data")
+str(d)
+writeLines("Then print the first observations")
+print(head(d))}
+
+info(rm.data)
 
 
 ##output
