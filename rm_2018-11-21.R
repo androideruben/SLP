@@ -62,8 +62,67 @@ residuals(rm.lmlog)
 #SS(Regr) is always 1 less to account for subtraction of the correction factor,
 
 
+#simulating a Poisson distribution p(x)=λ^x exp(-λ)/x!
+y <- rpois(n=1000, lambda = 1) # Poisson distribution
+mean(y)
+var(y)
+hist(y)
+
+#simulating a Normal distribution N(0, sigma^2)
+y <- rnorm(n=1000, mean=0, sd=1) # set parameters
+mean(y)
+var(y)
+hist(y)
+
+f <- function(x) {mean(x)}
+f(y)
+
+#regression (generalized linear models) model Poisson
+##create data
+x <- seq.int(from=1, to =1000)
+
+rm.data <- as.data.frame(cbind(y, x))
+str(rm.data)
+
+rm.glm <- glm(y~x, family="poisson", data=rm.data)
+summary(rm.glm)
+
+#regression (generalized linear models) model Normal
+##create data
+x <- seq.int(from=1, to =1000)
+y <- rnorm(n=1000, mean=0, sd=1) # set parameters
+
+rm.data <- as.data.frame(cbind(y, x))
+str(rm.data)
+
+rm.glm <- glm(y~x, family="gaussian", data=rm.data)
+summary(rm.glm)
+
+rm.lm <- lm(y~x, data=rm.data)
+summary(rm.lm)
 
 
+##output
+### Make a nice 4 way display with two plots and two text summaries
+getwd()
+library(gplots)
+     data(iris)
+     par(mfrow=c(2,2))
+     
+     plot( Sepal.Length ~ Species, data=iris, border="blue", col="cyan", main="1. Sepal Length by Species" )
+     
+     plotmeans( Sepal.Length ~ Species, data=iris, barwidth=2, connect=FALSE, main="2. 95% C.I. means")
+
+
+     reg <- lm( Sepal.Length ~ Species, data=iris )
+     textplot( capture.output(summary(reg)), valign="top")
+     title("3. lm Sepal Length by Species")
+
+     par(mfrow=c(1,1))
+     
+     
+     
+#############################################################################     
 #http://data.princeton.edu/r/linearmodels.html
 rm.lm <- lm(conc~uptake, data=CO2)
 coefficients(rm.lm)
@@ -75,7 +134,7 @@ solve( t(X) %*% X ) %*% t(X) %*% CO2$conc
 
 rm.lm <- lm(conc~uptake+Type, data=CO2)
 coefficients(rm.lm)
-
+anova(rm.glm)
 
 
 
