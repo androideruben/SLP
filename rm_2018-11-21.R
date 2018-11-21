@@ -84,7 +84,7 @@ f(y)
 ##create data
 x <- seq.int(from=1, to =1000)
 
-rm.data <- as.data.frame(cbind(y, x))
+rm.data <- as.data.frame(cbind(x,y))
 str(rm.data)
 
 rm.glm <- glm(y~x, family="poisson", data=rm.data)
@@ -95,7 +95,7 @@ summary(rm.glm)
 x <- seq.int(from=1, to =1000)
 y <- rnorm(n=1000, mean=0, sd=1) # set parameters
 
-rm.data <- as.data.frame(cbind(y, x))
+rm.data <- as.data.frame(cbind(x,y))
 str(rm.data)
 
 rm.glm <- glm(y~x, family="gaussian", data=rm.data)
@@ -113,6 +113,33 @@ print(head(d))}
 
 info(rm.data)
 
+data()
+#####################################################################################
+#NOAA
+
+#long data (concatenate)
+y <- rpois(n=1000, lambda = 1) # Poisson distribution
+rm.data <- as.data.frame(cbind(x,y))
+
+y <- rnorm(n=1000, mean=0, sd=1) # set parameters
+rm.data2 <- as.data.frame(cbind(x,y))
+
+rm.long <- rbind(rm.data, rm.data2)
+info(rm.long)
+View(rm.long)
+
+#wide data (merge) option 1:
+rm.wide <- merge(rm.data, rm.data2,by=c("x"))
+info(rm.wide)
+View(rm.wide)
+
+#wide data (merge) option 2, after renaming y:
+colnames(rm.data2)[2] <- "y2"
+View(rm.data2)
+rm.wide <- merge(rm.data, rm.data2,by=c("x"))
+View(rm.wide)
+
+###################################################################################
 
 ##output
 ### Make a nice 4 way display with two plots and two text summaries
