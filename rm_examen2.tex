@@ -1,0 +1,195 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%https://nw360.blogspot.com/2017/03/set-up-pdf-viewer-in-texniccenter.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,11pt]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}         
+\usepackage{amsthm}
+\usepackage{afterpage}
+\usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{latexsym}
+
+%\usepackage[framemethod=0,ntheorem]{mdframed}
+
+\usepackage{etexcmds}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+\usepackage[font=small,labelfont=bf,skip=0pt]{caption}
+%\captionsetup[table]{skip=0.2pt}
+%\captionsetup[table]{aboveskip=0pt}
+%\captionsetup[table]{belowskip=-15pt}
+
+\usepackage{subcaption}
+
+%\captionsetup[subtable]{skip=2pt}
+
+\usepackage[tableposition=top]{caption}
+\usepackage[toc,page]{appendix}
+\usepackage{amsfonts}
+
+\setcounter{MaxMatrixCols}{30}
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+
+\newcommand{\tablefont}{\fontsize{3mm}{3mm}\selectfont}
+\MakeOuterQuote{"}
+
+\newcommand{\MC}{\multicolumn}
+\newcommand{\MR}{\multirow}
+
+\headheight 15pt
+\headsep 2em
+
+\renewcommand{\footrulewidth}{0pt}
+\newtheorem{remark}{Remark}
+\newtheorem{comment}{\textbf{Comment}}
+\newtheorem{definition}{Definition}
+\newtheorem{discussion}{Discussion:}
+\newtheorem{claim}{Claim}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+\newcolumntype{T}{>{\tiny}l}
+\newcolumntype{M}{>{\centering\arraybackslash}m{3.1cm}}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy} %added by CDE to allow headers, footers to work
+%\rhead{Share\LaTeX}
+%\lhead{Guides and tutorials}
+
+
+\usepackage[pdftex]{hyperref}   
+\hypersetup{colorlinks, citecolor=Violet, linkcolor=Mahogany, urlcolor=blue}
+
+\rfoot{Page \thepage}
+%\lfoot{DRAFT-DELIBERATIVE-CONFIDENTIAL}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-25pt}%
+
+\begin{tabular}[t]{lp{1in}l}
+	\multirow{5}{*}{\includegraphics[width = 0.9in]{UASLP.png}} \\
+																								&& UASLP \\
+																								&& \\
+
+																								&& Facultad de Agronom\'ia y Agricultura. \\
+																								&& \\
+																								&& \\
+
+																								&& Examen 2 de Estad\'istica. \\
+																								&& \\
+																								&& Programaci\'on en R, \\ 
+																								&& Regresi\'on Lineal. \\
+																								&& \\
+																								&& \\
+																								&& \textbf{Nombre del Estudiante:} \\
+\typeout{************RUBEN IS HERE DEBBUGING THE LOG}
+
+\end {tabular}
+\newpage
+\noindent 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\textbf{\textit{A. Saca fotos a lo que escribas en papel y guarda tu programa R en tu computadora.
+B. Enviar\'as a mi mail de la UASLP las fotos y el programa R (punto extra si envias el knit completo, punto 
+extra si agregas gr\'aficas). 
+C. El programa R vale 30\% y calificar\'e adem\'as explicaciones y notas que me ayuden a entenderlo.}}}
+
+\section{COMPARACION DE DOS MODELOS (Setenta porciento)}
+
+Ejemplo de datos colectados en diferente tiempo pero que tienen variables comunes, el siguiente ejercicio te 
+guiar\'a en poner los datos juntos y compara los modelos.
+
+Los datos son records mundiales de atletismo para hombres y mujeres y compararemos sus $\beta$ y
+veremos si estad\'isticamente los hombres son m\'as r\'apidos que las mujeres (m\'as discusi\'on de esto en 
+el seminario).
+
+Usa los datos \textit{\textbf{en el programa adjunto en tu inbox}} y haz lo siguiente como est\'a indicado 
+en el programa:
+
+\begin{enumerate}	
+\item Lee las dos bases de datos
+
+\item Para cada base de datos, estima la ordenada al origen y la beta que corresponden al modelo
+$Y=\beta_{0}+ \beta_{1} \times X+ \varepsilon$, con Y=log(Tiempo), X=log(Distancia)
+
+\item Pon dummy variable para sexo, y concatena los datos
+
+\item Ejecuta el siguiente modelo de regresi\'on para la base de datos concatenada:
+
+$log(Tiempo)=\beta_{0}+ \beta_{1} \times log(Distancia)+ \beta_{2} \times Sexo+ \beta_{3} \times Sexo*log(
+Distancia)+ \varepsilon$
+
+\end{enumerate}	
+
+Salva tu programa y haz lo siguiente:
+
+\begin{itemize}
+\item \textbf{\textit{Reporta por escrito en papel}} el modelo estimado de la base de datos hombres y el 
+modelo de la base de datos mujeres. 
+
+\item \textbf{\textit{Reporta por escrito en papel}} cu\'al de las pendientes implica m\'as rapidez
+
+\item \textbf{\textit{Reporta por escrito en papel}} las hip\'otesis nula $H_{0}$ y alternativa $H_{A}$ de 
+la intercept y slope(s) y tu decisi\'on(es) de aceptar o no las hip\'otesis nula con un nivel de 
+significancia de $\alpha$= 0.05 (usa los p-value). Reporta tambi\'en si la relacion es creciente o no basada 
+en cada pendiente.
+
+\item \textbf{\textit{Reporta por escrito en papel}} el modelo con los datos concatenados, pero
+solamente los par\'ametros (ya sea intercept, $\beta$ o ambos) significativos al nivel $\alpha$= 0.05
+
+\item \textbf{\textit{Reporta por escrito en papel}} si la interacci\'on Sexo*log(Distancia) es significativa.
+(Nota: esto se interpreta como los efectos de sexo con log(Distancia) no son significativos y podemos 
+suponer que la rapidez es pararlela entre hombres y mujeres y ANCOVA es un buen modelo).
+
+\item \textbf{\textit{Reporta por escrito en papel}} la \textit{Multiple R-squared}, esta la encuentras al 
+ejecutar \textit{anova}. Este n\'umero es deseable que este cerca de 1.00 porque en porcentaje explica que 
+tan bien la variaci\'on de Y est\'a explicada por el modelo. 
+\end{itemize}
+
+\textit{\textbf{FIN DE EXAMEN}} \\
+\textit{\textbf{FIN DE EXAMEN}} \\
+\textit{\textbf{FIN DE EXAMEN}} \\
+
+
+\section{Este examen fue escrito en \LaTeX}
+
+Si quieres aprender $\LaTeX$ instala lo siguiente en este orden:
+
+\begin{enumerate}
+	\item \url{https://miktex.org/download}
+	\item \url{http://www.texniccenter.org/download/}
+\end{enumerate}
+
+Guarda el \textit{tex} y \textit{png} adjuntos en tu computadora, inicia \textit{TeXnicCenter}, abre el 
+\textit{tex} y haz click en el icono \textit{build and view current file} para ejecutar el \textit{tex} 
+file, el resultado se abrir\'a como un \textit{pdf, html, o rtf}.
+Si no aparece ning\'un pdf, html, o rtf, b\'uscalo en el folder donde est\'a tu tex file.
+
+Asegurate que tienes pdf instalado, o alguna version gratis como pdf reader, o pdf Sumatra.
+
+Experimenta con el \textit{tex} file y pronto podr\'as escribir tus propios documentos en \LaTeX.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
