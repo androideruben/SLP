@@ -32,8 +32,9 @@ run;
 data work.hombres;
 set work.hombres;
 
-DistanciaLog=log(Distancia); *agregando log(Distancia);
-TiempoLog=log(Tiempo); *agregando log(Tiempo);
+DistanciaLog=log(Distancia); *agregando log(Distancia) a los datos;
+TiempoLog=log(Tiempo); *agregando log(Tiempo) a los datos;
+
 run;
 
 *1b. datos mujeres:;
@@ -50,45 +51,66 @@ cards;
 ;
 run;
 
-******* pon aqui tu codigo de los datos mujeres con log(Distancia) y log(Tiempo) agregados
-y ejecuta esta parte;
+******* pon abajo tu codigo de los datos mujeres con log(Distancia) y log(Tiempo) agregados
+y ejecuta esta parte (ve como se le hizo para los datos hombres;
+
+
+
+
+
 
 *2a. Para la base de datos hombres, estima la ordenada al origen y la beta
 del modelo en el pdf (adjunto):;
-proc reg data=work.hombres;
-model TiempoLog=DistanciaLog;
-run;
-quit;
+
+*********************Escribe y ejecuta abajo el codigo del modelo 
+TiempoLog= DistanciaLog 
+*de los datos hombres;
+
+
+
+
+
+
 
 *2b. Para la base de datos mujeres, estima la ordenada al origen y la beta
 del modelo en el pdf (adjunto):;
 
-******* pon aqui tu codigo del modelo de mujeres y ejecuta esta parte;
+*********************Escribe y ejecuta abajo el codigo del modelo 
+TiempoLog= DistanciaLog 
+*de los datos mujeres;
+
+
+
+
+
+
 
 *3. Pon dummy variable para sexo, y concatena los datos
 Dummy variable para identificar hombres de mujeres:;
 
+*Simplemente ejecuta esto:;
 data work.hombres;
 set work.hombres;
-Sexo=1;
+Sexo=1; *dummy variable para sexo;
 run;
 
+*y esto:;
 data work.mujeres;
 set work.mujeres;
-Sexo=0;
+Sexo=0; *dummy variable para sexo;
 run;
 
-*datos hombre y mujer concatenados:;
+*ahora ejecuta esta concatenacion:;
 data work.hm;
 set work.hombres work.mujeres;
-SexoDistanciaLog=Sexo*DistanciaLog;
+SexoDistanciaLog=Sexo*DistanciaLog; *agregando interaccion;
 run;
 
 *4. Modelo de regresion:;
 
-proc reg data=work.hm;
-model TiempoLog=DistanciaLog Sexo SexoDistanciaLog;
-run;
+*********************Escribe y ejecuta abajo el codigo del modelo 
+TiempoLog=DistanciaLog+ Sexo+ Sexo*DistanciaLog de los datos work.hm;
+
 quit;
 
 ods pdf close;

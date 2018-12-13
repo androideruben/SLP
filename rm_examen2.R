@@ -46,33 +46,55 @@ Distancia Tiempo
          ")
 mujeres <- read.table(textConnection(Input), header=TRUE)
 
-######## pon aqui tu codigo de los datos mujeres con log(Distancia) y log(Tiempo) agregados
+######## pon abajo tu codigo de los datos mujeres con log(Distancia) y log(Tiempo) agregados
 ######### y ejecuta esta parte
 
 
+
+
+
 #2a. Para la base de datos hombres, estima la ordenada al origen y la beta
-#del modelo en el pdf (adjunto):
-hombres.lm <- lm(TiempoLog~DistanciaLog, data=hombres)
-summary(hombres.lm)
-anova(hombres.lm)
+#del modelo en el pdf (adjunto): 
+
+#####################Escribe y ejecuta abajo el codigo del modelo 
+#TiempoLog~ DistanciaLog
+#de los datos hombres, no olvides ejecutar summary y anova
+
+
+
 
 #2b. Para la base de datos mujeres, estima la ordenada al origen y la beta
 #del modelo en el pdf (adjunto):
 
-######### pon aqui tu codigo del modelo de mujeres y ejecuta esta parte
+#####################Escribe y ejecuta abajo el codigo del modelo 
+#TiempoLog~ DistanciaLog 
+#de los datos mujeres, no olvides ejecutar summary y anova
+
+
+
+
 
 #3. Pon dummy variable para sexo, y concatena los datos
-#Dummy variable para identificar hombres de mujeres:
+#Dummy variable para identificar hombres de mujeres de la siguiente manera:
 hombres$Sexo <- 1
 mujeres$Sexo <- 0
 
-#datos hombre y mujer concatenados 
+#ejecuta esta concatenacion: 
 data.hm <- as.data.frame(rbind(hombres, mujeres))
 
 #4. Modelo de regresion
-hm.lm <- lm(TiempoLog~DistanciaLog+Sexo+Sexo:DistanciaLog, data=data.hm)
-summary(hm.lm)
-anova(hm.lm)
+
+#####################Escribe y ejecuta abajo el codigo del modelo 
+# TiempoLog~DistanciaLog+ Sexo+ Sexo:DistanciaLog 
+#de los datos data.hm no olvides ejecutar summary y anova
+
+
+
+
+
+
+
+
 
 ##########################################################################################################################
 #end of program
