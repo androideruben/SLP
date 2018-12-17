@@ -1,0 +1,188 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%https://nw360.blogspot.com/2017/03/set-up-pdf-viewer-in-texniccenter.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,11pt]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}         
+\usepackage{amsthm}
+\usepackage{afterpage}
+\usepackage[table, usenames, dvipsnames]{xcolor}
+\usepackage{latexsym}
+
+%\usepackage[framemethod=0,ntheorem]{mdframed}
+
+\usepackage{etexcmds}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+\usepackage[font=small,labelfont=bf,skip=0pt]{caption}
+%\captionsetup[table]{skip=0.2pt}
+%\captionsetup[table]{aboveskip=0pt}
+%\captionsetup[table]{belowskip=-15pt}
+
+\usepackage{subcaption}
+
+%\captionsetup[subtable]{skip=2pt}
+
+\usepackage[tableposition=top]{caption}
+\usepackage[toc,page]{appendix}
+\usepackage{amsfonts}
+
+\setcounter{MaxMatrixCols}{30}
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+
+\newcommand{\tablefont}{\fontsize{3mm}{3mm}\selectfont}
+\MakeOuterQuote{"}
+
+\newcommand{\MC}{\multicolumn}
+\newcommand{\MR}{\multirow}
+
+\headheight 15pt
+\headsep 2em
+
+\renewcommand{\footrulewidth}{0pt}
+\newtheorem{remark}{Remark}
+\newtheorem{comment}{\textbf{Comment}}
+\newtheorem{definition}{Definition}
+\newtheorem{discussion}{Discussion:}
+\newtheorem{claim}{Claim}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+\newcolumntype{T}{>{\tiny}l}
+\newcolumntype{M}{>{\centering\arraybackslash}m{3.1cm}}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy} %added by CDE to allow headers, footers to work
+%\rhead{Share\LaTeX}
+%\lhead{Guides and tutorials}
+
+
+\usepackage[pdftex]{hyperref}   
+\hypersetup{colorlinks, citecolor=Violet, linkcolor=Mahogany, urlcolor=blue}
+
+\rfoot{Page \thepage}
+%\lfoot{DRAFT-DELIBERATIVE-CONFIDENTIAL}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-25pt}%
+
+\begin{tabular}[t]{lp{1in}l}
+	\multirow{5}{*}{\includegraphics[width = 0.9in]{UASLP.png}} \\
+																								&& UASLP \\
+																								&& \\
+
+																								&& Facultad de Agronom\'ia y Agricultura. \\
+																								&& \\
+																								&& \\
+
+																								&& Soluci\'on al examen 2 de Estad\'istica. \\
+																								&& \\
+																								&& Programaci\'on en R, \\ 
+																								&& Regresi\'on Lineal. \\
+																								&& \\
+																								&& \\
+\typeout{************RUBEN IS HERE DEBBUGING THE LOG}
+
+\end {tabular}
+\newpage
+\noindent 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\textbf{\textit{Soluciones}}}
+
+\section{COMPARACION DE DOS MODELOS}
+
+\begin{itemize}
+\item \textbf{\textit{Reporta por escrito en papel}} el modelo estimado de la base de datos hombres y el 
+modelo estimado de la base de datos mujeres 
+
+\\
+
+\textbf{\textit{Soluci\'on:}}
+
+Modelo hombres: TiempoLog= -2.823196+ 1.112214* DistanciaLog
+
+\\
+
+Modelo mujeres: TiempoLog= -2.69216+ 1.11167* DistanciaLog
+
+
+\item \textbf{\textit{Reporta por escrito en papel}} cual de los dos modelos indica m\'as rapidez
+
+\textbf{\textit{Soluci\'on:}} Rapidez es la pendiente del modelo, la pendiente del modelo de hombres es ligeramente mayor al del modelo de mujeres, entonces, el modelo de hombres tiene mayor rapidez.
+
+\item \textbf{\textit{Reporta por escrito en papel}} las hip\'otesis nula $H_{0}$ y alternativa $H_{A}$ de 
+la intercept y slope(s) de cada uno de los dos modelos y tu decisi\'on de aceptar o no las hip\'otesis nula con un nivel de 
+significancia de $\alpha$= 0.05 (usa los p-value). Reporta tambi\'en si las relaciones son crecientes o no 
+con base en cada pendiente
+
+$H_{0}$: Intercept=0
+
+$H_{A}$: Intercept \neq 0
+
+Rechazar la hip\'otesis nula porque los p-values son menored a 0.05
+
+Similarmente para las hip\'otesis de los coeficientes de cada modelo: rechazar las hip\'otesis nulas de que las pendientes son cero.
+
+Cada pendiente en cada modelo es positiva, por lo tanto las relaciones son crecientes (a mayor distancia, mayort tiempo)
+
+\item \textbf{\textit{Reporta por escrito en papel}} el modelo con los datos concatenados, pero
+solamente los par\'ametros (ya sea intercept, $\beta$ o ambos) significativos al nivel $\alpha$= 0.05
+
+Modelo de datos concatenados, con sexo una dummy variable e interacciones sexo*distancia, solo coeficientes (pendientes) significativas
+(significativamente distintas de cero):\\
+
+\textbf{\textit{Soluci\'on:}} TiempoLog= -2.6921619+ 1.1116747* DistanciaLog
+
+
+\item \textbf{\textit{Reporta por escrito en papel}} si la interacci\'on Sexo*log(Distancia) es significativa.
+(Nota: esto se interpreta como los efectos de sexo con log(Distancia) no son significativos y podemos 
+suponer que la rapidez es pararlela entre hombres y mujeres y ANCOVA es un buen modelo)
+
+\textbf{\textit{Soluci\'on:}} La prueba de hip\'otesis de la interacci\'on DistanciaLog*Sexo es de que la pendiente es distinta de cero.
+Como el p-value es 0.983, que es mayor a 0.05, no se rechaza la hip\'otesis nula y se concluye que la pendiente es cero (a pesar de que
+num\'ericamente la pendiente es 0.0005397, esto es, estad\'isticamente la pendiente es cero, pero num\'ericamente no lo es).
+
+\item \textbf{\textit{Reporta por escrito en papel}} tu prediccion del tiempo que los hombres correr\'ian la Distancia de 60
+y el tiempo que las mujeres correr\'ian la Distancia 200. Ten cuidado, nota que tu modelo est\'a en la escala log,
+as\'i que calcular\'as con calculadora el log(Distancia de la pregunta) y luego tendr\'as que usar exponencial
+porque log es base e.
+
+\textbf{\textit{Soluci\'on:}} a. hombres corren la distancia 60 usando el modelo de hombres en 5.64399 y se resuelve as\'i: \\
+TiempoLog= -2.823196+ 1.112214* log(60) \\
+exp(TiempoLog) es 5.64399
+
+(Ve el resto de posibilidades en rm examen2 solucion knit R.pdf o en rm examen2 solucion SAS output.pdf).
+
+\item \textbf{\textit{Reporta por escrito en papel}} la \textit{Multiple R-squared}, esta la encuentras al 
+ejecutar \textit{anova} (o en la tabla de resultados en SAS). Este n\'umero es deseable que este cerca de 1.00 porque en porcentaje explica 
+que tan bien la variaci\'on de Y est\'a explicada por el modelo
+\end{itemize}
+
+\textbf{\textit{Soluci\'on:}} Para el modelo de hombres, la R-Squared es 0.9995
+Localiza el resto de las R-squared en \textit{rm examen2 solucion knit R.pdf} o en \textit{rm examen2 solucion SAS output.pdf}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
