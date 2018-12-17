@@ -1,13 +1,13 @@
-##########################################################################################################################
+######################################################################
 #programador: 
 #examen 2, diciembre del 2018
-##########################################################################################################################
+######################################################################
 
 library(car)
 library(ggplot2)
 library(reshape2)
 
-##########################################################################################################################
+######################################################################
 
 #1. Lee las dos bases de datos siguientes:
 #1a. datos hombres:
@@ -97,14 +97,51 @@ data.hm <- as.data.frame(rbind(hombres, mujeres))
 				summary(hombresmujeres.lm)
 				anova(hombresmujeres.lm)
 
+				##Estimacion de tiempos si hombres corrieran 60, mujeres corrieran 200 
+				###hay differentes respuestas porque son diferentes modelos. 
+				###Compara tus resultados de la opcion que elegiste.
+				###(estos calculos se pueden hacer a mano o siguiendo esta parte del programa):
+				
+				###### 4 opcion I: tiempos estimados por los modelos separados:
+				
+				#a. hombres corren la distancia 60 usando el modelo de hombres:
+				TiempoLog= -2.823196+ 1.112214* log(60)
+				exp(TiempoLog)
 
+				#b. mujeres corren la distancia 200 usando el modelo de mujeres:
+				TiempoLog= -2.69216+ 1.11167* log(200)
+				exp(TiempoLog)
+				
+				
+				###### 4 opcion II: tiempos estimados por los modelos juntos usando datos 
+				######concatenados:
+				
+				#a. hombres corren la distancia 60 usando el modelo de hombres y mujeres 
+				#(coeficientes significantes)
+				TiempoLog= -2.6921619+ 1.1116747* log(60)
+				exp(TiempoLog)
 
+				#b. mujeres corren la distancia 200 usando el modelo de hombres y mujeres 
+				#(coeficientes significantes):
+				TiempoLog= -2.6921619+ 1.1116747* log(200)
+				exp(TiempoLog)
+				
+				###### 4 opcion III: tiempos estimados por los modelos juntos usando 
+				######datos concatenados (hombres es Sexo=1):
+				
+				#a. hombres corren la distancia 60 usando el modelo de hombres y mujeres 
+				#(coeficientes significantes o no)
+				TiempoLog= -2.6921619+ 1.1116747* log(60)- 0.1310339*1+ 0.0005397*1
+				exp(TiempoLog)
 
+				#b. mujeres corren la distancia 200 usando el modelo de hombres y mujeres 
+				#(coeficientes significantes o no):
+				TiempoLog= -2.6921619+ 1.1116747* log(200)- 0.1310339*0+ 0.0005397*0
+				exp(TiempoLog)
 
-
-##########################################################################################################################
+######################################################################
 #end of program
-##########################################################################################################################
+######################################################################
 
 
 

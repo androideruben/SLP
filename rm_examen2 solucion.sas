@@ -133,6 +133,89 @@ TiempoLog=DistanciaLog+ Sexo+ Sexo*DistanciaLog de los datos work.hm;
 				run;
 
 quit;
+title; title2;
+
+**Estimacion de tiempos si hombres corrieran 60, mujeres corrieran 200 
+hay differentes respuestas porque son diferentes modelos. Compara tus resultados de la opcion que elegiste.
+(estos calculos se pueden hacer a mano o siguiendo esta parte del programa):;
+
+****** 4 opcion I: tiempos estimados por los modelos separados:;
+data work.calculos;
+format TiempoLog Tiempo 10.7;
+
+				*a. hombres corren la distancia 60 usando el modelo de hombres:;
+				TiempoLogH= -2.823196 +1.112214* log(60);
+				TiempoH=exp(TiempoLogH);
+
+				*b. mujeres corren la distancia 200 usando el modelo de mujeres:;
+				TiempoLogM= -2.69216 +1.11167* log(200);
+				TiempoM=exp(TiempoLogM);
+
+put	TiempoLog:;
+put Tiempo:;
+run;
+proc print label noobs data=work.calculos;
+format Tiempo: 10.7;
+
+title "4 opcion I: tiempos estimados por los modelos separados";
+var TiempoH TiempoM;
+label 
+TiempoH="Tiempo Hombres (Distancia=60)" 
+TiempoM="Tiempo Mujeres (Distancia=200)";
+run;
+
+****** 4 opcion II: tiempos estimados por los modelos juntos usando datos concatenados:;
+data work.calculos;
+format TiempoLog Tiempo 10.7;
+				
+				*a. hombres corren la distancia 60 usando el modelo de hombres y mujeres (coeficientes significantes);
+				TiempoLogH= -2.6921619 +1.1116747* log(60);
+				TiempoH=exp(TiempoLogH);
+
+				*b. mujeres corren la distancia 200 usando el modelo de hombres y mujeres (coeficientes significantes):;
+				TiempoLogM= -2.6921619 +1.1116747* log(200);
+				TiempoM=exp(TiempoLogM);
+				
+put	TiempoLog:;
+put Tiempo:;
+run;
+proc print label noobs data=work.calculos;
+format Tiempo: 10.7;
+
+title "4 opcion II: tiempos estimados por los modelos juntos usando datos concatenados";
+title2 "(usando solo coeficientes significativos)";
+var TiempoH TiempoM;
+label 
+TiempoH="Tiempo Hombres (Distancia=60)" 
+TiempoM="Tiempo Mujeres (Distancia=200)";
+run;
+
+				
+****** 4 opcion III: tiempos estimados por los modelos juntos usando datos concatenados (hombres es Sexo=1):;
+data work.calculos;
+format TiempoLog Tiempo 10.7;
+				
+				*a. hombres corren la distancia 60 usando el modelo de hombres y mujeres (coeficientes significantes);
+				TiempoLogH= -2.6921619 +1.1116747* log(60) -0.1310339*1 +0.0005397*1;
+				TiempoH=exp(TiempoLogH);
+
+				*b. mujeres corren la distancia 200 usando el modelo de hombres y mujeres (coeficientes significantes):;
+				TiempoLogM= -2.6921619 +1.1116747* log(200) -0.1310339*0 +0.0005397*0;
+				TiempoM=exp(TiempoLogM);
+				
+put	TiempoLog:;
+put Tiempo:;
+run;
+proc print label noobs data=work.calculos;
+format Tiempo: 10.7;
+
+title "4 opcion III: tiempos estimados por los modelos juntos usando datos concatenados (hombres es Sexo=1)";
+title2 "(usando coeficientes significativos o no)";
+var TiempoH TiempoM;
+label 
+TiempoH="Tiempo Hombres (Distancia=60)" 
+TiempoM="Tiempo Mujeres (Distancia=200)";
+run;
 
 ods pdf close;
 
